@@ -1,3 +1,5 @@
+from langchain_core.prompts import PromptTemplate
+
 PROMPT_TEMPLATE = """
 CONTEXTO:
 {contexto}
@@ -25,5 +27,13 @@ PERGUNTA DO USUÁRIO:
 RESPONDA A "PERGUNTA DO USUÁRIO"
 """
 
-def search_prompt(question=None):
-    pass
+def search_prompt(question=None, contexto=None):
+  if question is None or question.strip() == "":
+    question = "Sem pergunta fornecida"
+
+  if contexto is None:
+    contexto = "Sem dados para serem listados"
+  
+  prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
+
+  return prompt.format(pergunta=question, contexto=contexto)
