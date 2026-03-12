@@ -4,9 +4,9 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 class DocumentProcessor:
     def __init__(self, pdf_path: str, chunk_size: int = 1000, chunk_overlap: int = 150):
-        self.__pdf_path = pdf_path
-        self.__chunk_size = chunk_size
-        self.__chunk_overlap = chunk_overlap
+        self._pdf_path = pdf_path
+        self._chunk_size = chunk_size
+        self._chunk_overlap = chunk_overlap
     
     def process(self):
         docs = self._load_document()
