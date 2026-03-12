@@ -2,7 +2,7 @@ from langchain_core.prompts import PromptTemplate
 
 PROMPT_TEMPLATE = """
 CONTEXTO:
-{contexto}
+{context}
 
 REGRAS:
 - Responda somente com base no CONTEXTO.
@@ -22,18 +22,18 @@ Pergunta: "Você acha isso bom ou ruim?"
 Resposta: "Não tenho informações necessárias para responder sua pergunta."
 
 PERGUNTA DO USUÁRIO:
-{pergunta}
+{question}
 
 RESPONDA A "PERGUNTA DO USUÁRIO"
 """
 
-def search_prompt(question=None, contexto=None):
-  if question is None or question.strip() == "":
+def search_prompt(question: str, context: str):
+  if not question or question.strip() == "":
     question = "Sem pergunta fornecida"
 
-  if contexto is None:
-    contexto = "Sem dados para serem listados"
+  if not context or context.strip() == "":
+    context = "Sem dados para serem listados"
   
   prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
 
-  return prompt.format(pergunta=question, contexto=contexto)
+  return prompt.format(question=question, context=context)
