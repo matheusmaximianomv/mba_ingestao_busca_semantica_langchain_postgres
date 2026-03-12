@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from enums.model_provider import ModelProvider
 
 ENVS_REQUIRED = [
-    'GEMINI_API_KEY',
+    'GOOGLE_API_KEY',
     'OPENAI_API_KEY',
     'GOOGLE_MODEL',
     'OPENAI_MODEL',
